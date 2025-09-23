@@ -308,3 +308,14 @@ form input[type="submit"] {
 span.mark-in-red {
   color: #ef4444;
 }
+
+img.image-card {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+ul.image-list {
+  list-style: none;
+}

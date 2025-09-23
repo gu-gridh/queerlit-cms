@@ -44,7 +44,8 @@ def navigation(context):
         .live()
         .specific()
         .filter(Q(simplepage__show_in_home_submenu=True)
-                | Q(formpage__show_in_home_submenu=True)).specific()
+                | Q(formpage__show_in_home_submenu=True)
+                | Q(imagepage__show_in_home_submenu=True)).specific()
     )
 
     top_level = (

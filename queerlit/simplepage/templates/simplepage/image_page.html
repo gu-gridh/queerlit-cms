@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+    <div class="title"><h1>{{ page.title }}</h1></div>
+    <div class="container">{{ page.intro|richtext }}
+
+    {% for section in page.sections.all %}
+        <h2>{{ section.heading }}</h2>
+
+        <ul class="image-list">
+          {% for card in section.cards.all %}
+            {% with image_card=card.image_card %}
+              <li class="images-card">
+                {% if image_card.image %}
+                  {% image image_card.image max-800x600 class="image-card" alt=image_card.title %}
+                {% endif %}
+                {% if image_card.image_download or image_card.pdf_download %}
+                <ul class="images-downloads">
+                  {% if image_card.pdf_download %}
+                    <li><a href="{{ image_card.pdf_download.url }}" download>Ladda ner som pdf</a></li>
+                  {% endif %}
+                  {% if image_card.image_download %}
+                    <li><a href="{{ image_card.image.file.url }}" download>Ladda ner som png</a></li>
+                  {% endif %}
+                </ul>
+                {% endif %}
+              </li>
+            {% endwith %}
+          {% endfor %}
+        </ul>
+    {% endfor %}
+    </div>
+{% endblock %}
