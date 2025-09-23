@@ -1,0 +1,43 @@
+{% load wagtailcore_tags navigation_tags i18n %}
+{% get_current_language as lang %}
+<nav class="site-nav">
+    <ul class="menu">
+        <li class="menu-item">
+            <a href="https://queerlit.dh.gu.se/">{% if lang == 'sv' %}Titlar{% else %}Titles{% endif %}</a>
+        </li>
+        <li class="menu-item">
+            <a href="https://queerlit.dh.gu.se/subjects/">{% if lang == 'sv' %}Ämnen{% else %}Subjects{% endif %}</a>
+        </li>
+        <li class="menu-item has-children{% if request.path == page.localized.url or parent_url == page.localized.url|cut:"/" %} is-active{% endif %}">
+            <a href="{{ page.localized.url }}">{% if page.localized.navigation_title %}{{ page.localized.navigation_title }}{% else %}{{ page.localized.title }}{% endif %}</a>
+            {% if page_children %}
+            <ul class="submenu">
+                {% for p in page_children %}
+                <li class="submenu-item{% if request.path == p.localized.url %} is-active{% endif %}">
+                    <a href="{{ p.localized.url }}">{% if p.localized.navigation_title %}{{ p.localized.navigation_title }}{% else %}{{ p.localized.title }}{% endif %}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </li>
+
+      {% for p in top_level %}
+        <li class="menu-item{% if request.path == p.localized.url %} is-active{% endif %}">
+        <a href="{{ p.localized.url }}">{% if p.localized.navigation_title %}{{ p.localized.navigation_title }}{% else %}{{ p.localized.title }}{% endif %}</a>
+        </li>
+      {% endfor %}
+      {% other_locale_translation page as other %}
+      {% if other %}
+        {% get_language_info for other.locale.language_code as other_lang %}
+        {% language other.locale.language_code %}
+        <li class="menu-item">
+          <a href="{% pageurl other %}"
+           rel="alternate"
+           hreflang="{{ other_lang.code }}">
+          {{ other_lang.name_local|capfirst }}
+          </a>
+        </li>
+        {% endlanguage %}    
+      {% endif %}
+    </ul>
+</nav>

@@ -1,0 +1,11 @@
+name: queerlit
+channels:
+  - conda-forge
+  - anaconda
+  - defaults
+dependencies:
+  - python==3.12
+  - gdal
+  - pip
+  - pip:
+    - -r requirements.txt

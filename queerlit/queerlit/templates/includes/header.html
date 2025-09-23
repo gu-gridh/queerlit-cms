@@ -1,0 +1,9 @@
+{% load wagtailcore_tags navigation_tags %}
+
+<header>
+    {% get_site_root as site_root %}
+    <a href="{{site_root.url}}">
+        <img class="logo" src="/media/images/queerlit-white.original.png" alt="Queerlit Logo">
+    </a>
+    {% navigation %}
+</header>
