@@ -13,6 +13,16 @@ STATIC_URL = os.getenv('STATIC_URL')
 # WAGTAILADMIN_BASE_URL = "https://queerlit.dh.gu.se/om"
 WAGTAILADMIN_BASE_URL = "https://dev.dh.gu.se/om"
 
+ALLOWED_HOSTS = ["dev.dh.gu.se"]
+
+CSRF_TRUSTED_ORIGINS = ['https://dev.dh.gu.se']
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
