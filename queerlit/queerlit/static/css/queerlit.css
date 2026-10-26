@@ -319,6 +319,10 @@ img.image-card {
   margin-bottom: 2rem;
 }
 
+li.images-card {
+  margin-bottom: 2rem;
+}
+
 ul.image-list, ul.images-downloads {
   list-style: none;
   padding-left: 0;
