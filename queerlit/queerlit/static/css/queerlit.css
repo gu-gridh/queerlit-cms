@@ -92,6 +92,22 @@ img.logo {
   .footer {
     display:none;
   }
+
+  header, main {
+    max-width: 90%;
+  }
+  header {
+    padding: 1rem 0rem;
+  }
+
+  div.container {
+    margin: auto;
+    max-width: 100%;
+  }
+
+  main div.title {
+    word-break: break-word;
+  }
 }
 
 .footer a, .footer a:visited, .footer a:hover {
