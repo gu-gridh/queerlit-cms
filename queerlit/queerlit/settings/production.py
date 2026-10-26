@@ -11,11 +11,11 @@ STATIC_URL = os.getenv('STATIC_URL')
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 # WAGTAILADMIN_BASE_URL = "https://queerlit.dh.gu.se/om"
-WAGTAILADMIN_BASE_URL = "https://dev.dh.gu.se/om"
+WAGTAILADMIN_BASE_URL = os.getenv('WAGTAILADMIN_BASE_URL')
 
-ALLOWED_HOSTS = ["dev.dh.gu.se"]
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
 
-CSRF_TRUSTED_ORIGINS = ['https://dev.dh.gu.se']
+CSRF_TRUSTED_ORIGINS = os.getenv('TRUSTED').split(',')
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
